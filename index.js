@@ -32,7 +32,7 @@ const vcard = 'BEGIN:VCARD\n'
             + 'ORG: Pengembang XBot;\n' 
             + 'TEL;type=CELL;type=VOICE;waid=6282334297175:+62 823-3429-7175\n' 
             + 'END:VCARD' 
-prefix = '#'
+prefix = '#,!.'
 blocked = []          
 
 /*********** LOAD FILE ***********/
