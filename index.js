@@ -59,7 +59,16 @@ const event = JSON.parse(fs.readFileSync('./database/bot/event.json'))
 const _limit = JSON.parse(fs.readFileSync('./database/user/limit.json'))
 const uang = JSON.parse(fs.readFileSync('./database/user/uang.json'))
 /*********** END LOAD ***********/
-
+const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
+const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+const bulan = arrayBulan[moment().format('MM') - 1]
+const config = {
+    XBOT: '❉Azarela❉', 
+    nomer: 'wa.me/6289652574706',
+    whatsapp: 'Comming soon', 
+    tanggal: `TANGGAL: ${moment().format('DD')} ${bulan} ${moment().format('YYYY')}`,
+    waktu: time
+}
 /********** FUNCTION ***************/
 const getLevelingXp = (sender) => {
             let position = false
@@ -826,6 +835,16 @@ client.on('group-participants-update', async (anu) => {
                       await reply(`*selamat* ${pushname} kamu mendapatkan *${mining}Xp*`)
                       }
                     await limitAdd(sender)
+					break
+                 case 'phlogo':
+					var gh = body.slice(9)
+					var gbl1 = gh.split("|")[0];
+					var gbl2 = gh.split("|")[1];
+					if (args.length < 1) return reply('Teksnya mana um')
+					reply(mess.wait)
+					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/textpro?theme=pornhub&text1=${gbl1}&text2=${gbl2}`, {method: 'get'})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, image, {quoted: mek})
 					break
 				case 'bisakah':
 				if (!isRegistered) return reply(ind.noregis())
