@@ -1461,6 +1461,15 @@ client.on('group-participants-update', async (anu) => {
 						reply(ind.satukos())
 					}
 					break
+               case 'kbbi':
+					if (args.length < 1) return reply('Apa yang mau dicari um?')
+					anu = await fetchJson(`https://mnazria.herokuapp.com/api/kbbi?search=${body.slice(6)}`, {method: 'get'})
+					reply('Menurut Kbbi:\n\n'+anu.result)
+					break
+          case 'speed':
+          case 'ping':
+            await client.sendMessage(from, `Pong!!!!\nSpeed: ${processTime(t, moment())} _Second_`)
+            break
                  case 'event':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerb())
